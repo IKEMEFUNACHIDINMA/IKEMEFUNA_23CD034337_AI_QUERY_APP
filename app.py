@@ -13,6 +13,7 @@ app = Flask(__name__)
 DATABASE_FILE = "queries.db"
 GEMINI_KEY = os.getenv("GEMINI_API_KEY")   # (LOCAL)
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent"
+#test if empty
 print("DEBUG API KEY:", GEMINI_KEY)
 
 

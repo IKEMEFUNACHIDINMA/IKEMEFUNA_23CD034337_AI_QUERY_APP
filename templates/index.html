@@ -11,10 +11,10 @@
 <div class="container">
     <h1>AI Query Web App</h1>
 
-    <textarea id="questionBox" placeholder="Ask anything here..."></textarea>
+    <textarea id="questionBox" placeholder="Ask gemini anything here..."></textarea>
     <button onclick="sendQuestion()">Ask Gemini</button>
 
-    <h3>AI Response:</h3>
+    <h3>Gemini AI Response:</h3>
     <div id="responseBox"></div>
 </div>
 
@@ -23,7 +23,7 @@ function sendQuestion() {
     const userInput = document.getElementById("questionBox").value;
 
     if (!userInput) {
-        alert("Please type a question.");
+        alert("Cannot leave empty. Please type a question.");
         return;
     }
 
