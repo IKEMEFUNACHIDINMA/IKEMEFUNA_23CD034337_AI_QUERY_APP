@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Query App</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>AI Query Web App</h1>
+
+    <textarea id="questionBox" placeholder="Ask anything here..."></textarea>
+    <button onclick="sendQuestion()">Ask Gemini</button>
+
+    <h3>AI Response:</h3>
+    <div id="responseBox"></div>
+</div>
+
+<script>
+function sendQuestion() {
+    const userInput = document.getElementById("questionBox").value;
+
+    if (!userInput) {
+        alert("Please type a question.");
+        return;
+    }
+
+    fetch("/ask-ai", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({question: userInput})
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.answer) {
+            document.getElementById("responseBox").innerHTML = data.answer;
+        } else {
+            document.getElementById("responseBox").innerHTML = "Error: " + data.error;
+        }
+    });
+}
+</script>
+
+</body>
+</html>
